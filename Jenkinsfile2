@@ -1,0 +1,47 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('First Step') {
+            steps {
+                echo 'this is first step'
+            }
+        }
+
+        stage('Run a single command') {
+            steps {
+                sh 'pwd'
+            }
+        }
+
+        stage('Run multiple command') {
+            steps {
+                sh '''pwd
+                    ls
+                    cat
+                    date'''
+            }
+        }
+        stage('Run multiple command') {
+            steps {
+                echo 'Deploy Stage'
+            }
+        }
+    }
+
+    post {
+
+        always {
+            echo 'Pipeline Finished'
+        }
+
+        success {
+            echo 'Build Successful'
+        }
+
+        failure {
+            echo 'Build Failed'
+        }
+    }
+}
