@@ -23,7 +23,7 @@ pipeline {
                     date'''
             }
         }
-        stage('Run multiple command') {
+        stage('Run Prod command') {
             steps {
                 echo 'Deploy Stage'
             }
